@@ -39,3 +39,9 @@ jobs:
         run: trivy image moonabid/tic-tac-toe:latest > trivyimage.txt  
 
      
+  deploy:
+    needs: build-analyze-scan   
+    runs-on: [self-hosted]
+    steps:
+      - name: docker pull image
+        run: docker pull moonabid/tic-tac-toe:latest
