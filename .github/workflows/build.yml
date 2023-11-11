@@ -33,15 +33,16 @@ jobs:
           docker push moonabid/tic-tac-toe:latest
         env:
           DOCKER_CLI_ACI: 1
-
-
+      
+      
       - name: Image scan
         run: trivy image moonabid/tic-tac-toe:latest > trivyimage.txt  
-
-     
+      
+      
   deploy:
-    needs: build-analyze-scan   
-    runs-on: [self-hosted]
-    steps:
+   needs: build-analyze-scan   
+   runs-on: [self-hosted]
+   steps:
       - name: docker pull image
         run: docker pull moonabid/tic-tac-toe:latest
+      
