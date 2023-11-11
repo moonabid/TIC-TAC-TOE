@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     name: Build
     runs-on: [self-hosted]
     steps:
@@ -19,6 +18,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          
       - name: npm install dependency
         run: npm install
 
@@ -36,16 +36,4 @@ jobs:
 
 
       - name: Image scan
-        run: trivy image moonabid/tic-tac-toe:latest > trivyimage.txt 
-  deploy:
-   needs: build-analyze-scan   
-   runs-on: [self-hosted]
-   steps:
-      - name: docker pull image
-        run: docker pull moonabid/tic-tac-toe:latest
-
-      - name: Image scan
-        run: trivy image moonabid/tic-tac-toe:latest > trivyimagedeploy.txt  
-
-      - name: Deploy to container
-        run: docker run -d --name game -p 3000:3000 moonabid/tic-tac-toe:latest         
+        run: trivy image moonabid/tic-tac-toe:latest > trivyimage.txt    
