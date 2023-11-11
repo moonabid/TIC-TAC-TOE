@@ -45,4 +45,3 @@ jobs:
    steps:
       - name: docker pull image
         run: docker pull moonabid/tic-tac-toe:latest
-      
