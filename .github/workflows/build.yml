@@ -46,7 +46,7 @@ jobs:
       - name: Image scan
         run: trivy image moonabid/tic-tac-toe:latest > trivyimagedeploy.txt  
       - name: Deploy to container
-        run: docker run -d --name gamez -p 4000:4000 moonabid/tic-tac-toe:latest 
+        run: docker run -d --name gamezZ -p 4000:4000 moonabid/tic-tac-toe:latest 
       - name: Update kubeconfig
         run: aws eks --region ap-south-1 update-kubeconfig --name EKS_CLOUD
       - name: Deploy to EKS
